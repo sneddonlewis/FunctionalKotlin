@@ -30,3 +30,10 @@ fun <A> isSorted(aa: List<A>, order: (A, A) -> Boolean): Boolean {
         }
     return go(aa)
 }
+
+
+fun <A, B, C> curry(f: (A, B) -> C): (A) -> (B) -> C =
+    { a -> { b -> f(a, b) } }
+
+fun <A, B, C> partial1(a: A, f: (A, B) -> C): (B) -> C =
+    { f(a, it) }
