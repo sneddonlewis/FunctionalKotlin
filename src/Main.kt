@@ -31,6 +31,9 @@ fun <A> isSorted(aa: List<A>, order: (A, A) -> Boolean): Boolean {
     return go(aa)
 }
 
+fun <A, B, C> compose(f: (B) -> C, g: (A) -> B): (A) -> C =
+    { f(g(it)) }
+
 fun <A, B, C> uncurry(f: (A) -> (B) -> C): (A, B) -> C =
     { a, b ->  f(a)(b)  }
 
